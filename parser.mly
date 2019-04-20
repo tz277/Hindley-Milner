@@ -18,10 +18,10 @@
 %token THEN
 %token ELSE
 %token EOF
-/* %token FUN
-%token ARROW */
+%token FUN
+%token ARROW
 
-/* %right ARROW */
+%right ARROW
 %nonassoc IN
 %nonassoc ELSE
 %left LEQ
@@ -37,7 +37,7 @@ prog:
     ;
 
 expr:
-    /* | FUN; x = ID; ARROW; e = expr { Fun (x, e) } */
+    | FUN; x = ID; ARROW; e = expr { Fun (x, e) }
     | e1 = expr; LEQ; e2 = expr { Binop (Leq, e1, e2) }
     | e1 = expr; TIMES; e2 = expr { Binop (Mult, e1, e2) } 
     | e1 = expr; PLUS; e2 = expr { Binop (Add, e1, e2) }
@@ -47,7 +47,7 @@ expr:
     ;
 
 app:
-    /* | e1 = app; e2 = value { App (e1, e2) } */
+    | e1 = app; e2 = value { App (e1, e2) }
     | e = value { e }
 
 value:
