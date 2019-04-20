@@ -51,8 +51,8 @@ module EnvModel : MODEL = struct
     | Binop (bop, e1, e2) -> eval_binop env bop e1 e2
     | Let (x, e1, e2) -> eval_let env x e1 e2 
     | If (b, t, f) -> eval_if env b t f
-    | Fun (x, e) -> VFun (x, e, env)
-    | App (e1, e2) -> eval_app env e1 e2
+  (* | Fun (x, e) -> VFun (x, e, env)
+     | App (e1, e2) -> eval_app env e1 e2 *)
 
   and eval_binop env bop e1 e2 = 
     let v1 = eval_exp env e1 in 

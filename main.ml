@@ -9,9 +9,9 @@ let parse (s : string) : expr =
 let eval (e : expr) : value = Eval.EnvModel.eval e
 
 let interpret (s : string) : value = 
-  let exp = parse s in 
-  let v = eval exp in 
-  v
+  s |> parse |> Type.typecheck |> eval
 
 let s = "let x = 5 + 6 in if 3 <= x then x + 31 else 0"
+let s1 = "let x = 5 + 6 in if 3 <= x then x + y else 0"
 let s2 = "let x = 5 in let f = fun y -> y + x in let x = 1000 in f (-47)"
+let s3 = "let x = 5 in let f = fun y -> y + z in let x = 1000 in f (-47)"

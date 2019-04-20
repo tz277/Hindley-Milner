@@ -13,8 +13,8 @@ rule read =
   | white { read lexbuf }
   | "true" { TRUE }
   | "false" { FALSE }
-  | "fun" { FUN }
-  | "->" { ARROW }
+  (* | "fun" { FUN }
+  | "->" { ARROW } *)
   | "<=" { LEQ }
   | "*" { TIMES }
   | "+" { PLUS }

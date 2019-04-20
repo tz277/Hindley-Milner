@@ -60,5 +60,5 @@ and typeof_if ctx b t f =
     end
   | _ -> raise (TypeError "If expects bool")
 
-let typecheck (e : Ast.expr) : unit = 
-  ignore (typeof Context.empty e)
+let typecheck (e : Ast.expr) : Ast.expr = 
+  ignore (typeof Context.empty e); e
